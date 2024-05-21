@@ -1,9 +1,10 @@
 package com.example.listview
 
 import android.os.Bundle
-import android.widget.ArrayAdapter
+import android.util.Log
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
+import layout.MyCustomAdaptor
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,17 +19,16 @@ class MainActivity : AppCompatActivity() {
 
         //data
         var fruits =
-            arrayOf("Mango", "Banana", "Papaya", "Guava", "Pineapple", "JackFruit", "Apple")
-
-
+            listOf("Mango", "Banana", "Papaya", "Guava", "Pineapple", "JackFruit", "Apple")
         //adaptor
-        var arrayAdapter = ArrayAdapter(
-            this,
-            androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
-            fruits
-        )
+//        var arrayAdapter = ArrayAdapter(
+//            this,
+//            androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
+//            fruits
+//        )
+        var customAdapter = MyCustomAdaptor(this, fruits)
 
         //setting the adaptor to the view
-        listView.adapter = arrayAdapter
+        listView.adapter = customAdapter
     }
 }
